@@ -921,24 +921,47 @@ function renderCart() {
         <div class="cart-items">
           <h1 class="cart-h1">Shopping Cart</h1>
           <div class="cart-empty">
-            <h2>Your Cart is empty</h2>
-            <p>Looks like you haven't added anything yet</p>
+            <div class="cart-empty-illus" aria-hidden="true">
+              <svg class="illus" width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Soft background circle -->
+                <circle cx="120" cy="120" r="110" fill="#e7f6f8"/>
+                <!-- Inner subtle ring -->
+                <circle cx="120" cy="120" r="86" fill="#f5fbfc" stroke="#cfeaee" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <!-- Sparkle accents -->
+                <g fill="#1ba7b4" opacity="0.55">
+                  <path d="M48 70 L51 76 L57 78 L51 80 L48 86 L45 80 L39 78 L45 76 Z"/>
+                  <path d="M196 60 L198 64 L202 66 L198 68 L196 72 L194 68 L190 66 L194 64 Z"/>
+                  <path d="M200 170 L202 174 L206 176 L202 178 L200 182 L198 178 L194 176 L198 174 Z"/>
+                  <path d="M42 170 L44 174 L48 176 L44 178 L42 182 L40 178 L36 176 L40 174 Z"/>
+                </g>
+                <!-- Shopping bag (centered) -->
+                <g transform="translate(120 120)">
+                  <!-- Bag body -->
+                  <path d="M-48 -20 L-40 56 L40 56 L48 -20 Z" fill="#0f1a1f"/>
+                  <!-- Bag front highlight -->
+                  <path d="M-40 -16 L-34 50 L34 50 L40 -16 Z" fill="#1ba7b4"/>
+                  <!-- Bag top fold -->
+                  <path d="M-48 -20 L48 -20 L52 -28 L-52 -28 Z" fill="#0a3d44"/>
+                  <!-- Bag handles -->
+                  <path d="M-26 -28 Q-26 -52 -14 -52 L14 -52 Q26 -52 26 -28" stroke="#0f1a1f" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <!-- Cute face on bag -->
+                  <circle cx="-10" cy="10" r="3.2" fill="#0f1a1f"/>
+                  <circle cx="10" cy="10" r="3.2" fill="#0f1a1f"/>
+                  <path d="M-8 22 Q0 30 8 22" stroke="#0f1a1f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  <!-- Blush -->
+                  <ellipse cx="-18" cy="18" rx="4" ry="2.4" fill="#ffd7a3" opacity="0.7"/>
+                  <ellipse cx="18" cy="18" rx="4" ry="2.4" fill="#ffd7a3" opacity="0.7"/>
+                </g>
+                <!-- Floating tiny hearts / dots -->
+                <circle cx="70" cy="120" r="3" fill="#1ba7b4" opacity="0.45"/>
+                <circle cx="170" cy="120" r="3" fill="#1ba7b4" opacity="0.45"/>
+                <circle cx="120" cy="50" r="2.5" fill="#0f1a1f" opacity="0.35"/>
+                <circle cx="120" cy="190" r="2.5" fill="#0f1a1f" opacity="0.35"/>
+              </svg>
+            </div>
+            <h2>Your cart is empty</h2>
+            <p>Looks like you haven't added anything yet — let's find something you'll love.</p>
             <a class="cta" onclick="navigate('category','deals')">Shop today's deals</a>
-            <svg class="illus" width="280" height="280" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#0f1a1f;">
-              <!-- Person -->
-              <circle cx="120" cy="50" r="14" fill="currentColor"/>
-              <path d="M100 75 Q100 65 120 65 Q140 65 140 80 L140 130 L130 130 L130 175 L110 175 L110 130 L100 130 Z" fill="currentColor"/>
-              <!-- Arms reaching out -->
-              <path d="M100 90 L70 85" stroke-width="3"/>
-              <path d="M140 90 L170 80" stroke-width="3"/>
-              <!-- Empty cart -->
-              <path d="M30 100 L55 100 L70 165 L150 165 L165 110 L65 110" stroke-width="3"/>
-              <circle cx="80" cy="185" r="7" fill="currentColor"/>
-              <circle cx="140" cy="185" r="7" fill="currentColor"/>
-              <!-- Shrug effect lines -->
-              <path d="M55 75 L45 65" stroke-width="1.5" stroke-dasharray="3 2"/>
-              <path d="M180 70 L195 60" stroke-width="1.5" stroke-dasharray="3 2"/>
-            </svg>
           </div>
         </div>
       </div>
