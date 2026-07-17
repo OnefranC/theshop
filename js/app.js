@@ -52,11 +52,12 @@ function stars(n) {
 function productCard(p) {
   const isWished = State.wishlist.includes(p.id);
   const discount = Math.round((1 - p.price/p.originalPrice) * 100);
+  const fallbackImg = 'https://placehold.co/600x600/e7f6f8/1ba7b4?text=' + encodeURIComponent(p.title.split(' ')[0]);
   return `
     <article class="product-card" onclick="navigate('product', '${p.id}')" tabindex="0" role="button" aria-label="View ${escape(p.title)}">
       <div class="pc-media">
         <div class="pc-img">
-          <img src="${p.images[0]}" alt="${escape(p.title)}" loading="lazy">
+          <img src="${p.images[0]}" alt="${escape(p.title)}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">
           ${discount > 0 ? `<span class="pc-badge">-${discount}%</span>` : ''}
         </div>
         <button class="pc-wish ${isWished?'active':''}" onclick="event.stopPropagation(); toggleWish('${p.id}', this)" aria-label="Add to wishlist">
@@ -611,6 +612,16 @@ function renderCategory() {
     title = 'Today\'s deals';
     heroImg = 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&q=80';
     heroSub = 'Massive savings, limited time';
+  } else if (cat === 'refurbished') {
+    products = REFURBISHED_PRODUCTS.map(id => getProduct(id)).filter(Boolean);
+    title = 'Refurbished';
+    heroImg = 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80';
+    heroSub = 'Like-new products at unbeatable prices — fully inspected and certified';
+  } else if (cat === 'brands') {
+    products = BRANDS_PRODUCTS.map(id => getProduct(id)).filter(Boolean);
+    title = 'Top Brands';
+    heroImg = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80';
+    heroSub = 'Shop your favorite brands — quality guaranteed';
   } else if (CATEGORIES.find(c => c.id === cat)) {
     products = PRODUCTS.filter(p => p.category === cat);
     title = CATEGORIES.find(c => c.id === cat).name;
@@ -635,7 +646,7 @@ function renderCategory() {
         <h1>${escape(title)}</h1>
         <p>${escape(heroSub)}</p>
       </div>
-      <img src="${heroImg}" alt="">
+      <img src="${heroImg}" alt="" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/e7f6f8/1ba7b4?text=TheShop';">
     </section>
 
     <div class="container">
@@ -748,7 +759,7 @@ function renderProduct() {
       <div class="pdp-layout">
         <div class="gallery reveal-left">
           <div class="gallery-main">
-            <img id="main-img" src="${p.images[0]}" alt="${escape(p.title)}">
+            <img id="main-img" src="${p.images[0]}" alt="${escape(p.title)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/e7f6f8/1ba7b4?text=Product';">
             <button class="gallery-wish ${isWished?'active':''}" onclick="toggleWish('${p.id}', this)">
               ${isWished ? ICONS.heartFilled : ICONS.heart}
             </button>
@@ -757,7 +768,7 @@ function renderProduct() {
           <div class="gallery-thumbs">
             ${p.images.map((img, i) => `
               <div class="thumb ${i===0?'active':''}" onclick="selectThumb('${img}', this)">
-                <img src="${img}" alt="thumb ${i+1}">
+                <img src="${img}" alt="thumb ${i+1}" onerror="this.onerror=null; this.src='https://placehold.co/100x100/e7f6f8/1ba7b4?text=${i+1}';">
               </div>
             `).join('')}
           </div>
@@ -984,7 +995,7 @@ function renderCart() {
             return `
               <div class="cart-row" data-pid="${p.id}">
                 <div class="cart-img" onclick="navigate('product','${p.id}')" style="cursor:pointer;">
-                  <img src="${p.images[0]}" alt="${escape(p.title)}">
+                  <img src="${p.images[0]}" alt="${escape(p.title)}" onerror="this.onerror=null; this.src='https://placehold.co/120x120/e7f6f8/1ba7b4?text=Product';">
                 </div>
                 <div class="cart-info">
                   <div>

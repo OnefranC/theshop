@@ -279,16 +279,27 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
 .sub-nav a {
   color: var(--color-text-muted);
   position: relative;
-  padding: 4px 0;
-  transition: color .15s;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  transition: color .2s, background .2s, transform .2s;
 }
-.sub-nav a:hover, .sub-nav a.active { color: var(--color-text); }
+.sub-nav a:hover {
+  color: var(--color-text);
+  background: var(--color-bg-soft);
+  transform: translateY(-1px);
+}
+.sub-nav a.active {
+  color: var(--color-primary);
+  background: var(--color-accent-light);
+  font-weight: 600;
+}
 .sub-nav a.active::after {
   content: '';
   position: absolute;
-  left: 0; right: 0; bottom: -15px;
+  left: 14px; right: 14px; bottom: 0px;
   height: 2px;
-  background: var(--color-primary);
+  background: var(--color-accent);
+  border-radius: 1px;
 }
 
 /* ===========================================
