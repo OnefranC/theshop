@@ -28,6 +28,16 @@ const Motion = {
         }
       });
     });
+    // Safety net: if an element has been visible for 800ms but hasn't been
+    // marked visible (e.g. IntersectionObserver didn't fire), reveal it anyway.
+    // This prevents stuck-invisible elements.
+    setTimeout(() => {
+      els.forEach(el => {
+        if (!el.classList.contains('visible') && isInView(el)) {
+          reveal(el);
+        }
+      });
+    }, 800);
     // Then observe the rest for scroll-in
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

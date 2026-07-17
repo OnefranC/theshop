@@ -53,20 +53,42 @@ function productCard(p) {
   const isWished = State.wishlist.includes(p.id);
   const discount = Math.round((1 - p.price/p.originalPrice) * 100);
   return `
-    <div class="product-card" onclick="navigate('product', '${p.id}')">
-      <div class="pc-img">
-        <img src="${p.images[0]}" alt="${escape(p.title)}" loading="lazy">
-        <button class="pc-wish ${isWished?'active':''}" onclick="event.stopPropagation(); toggleWish('${p.id}', this)">
+    <article class="product-card" onclick="navigate('product', '${p.id}')" tabindex="0" role="button" aria-label="View ${escape(p.title)}">
+      <div class="pc-media">
+        <div class="pc-img">
+          <img src="${p.images[0]}" alt="${escape(p.title)}" loading="lazy">
+          ${discount > 0 ? `<span class="pc-badge">-${discount}%</span>` : ''}
+        </div>
+        <button class="pc-wish ${isWished?'active':''}" onclick="event.stopPropagation(); toggleWish('${p.id}', this)" aria-label="Add to wishlist">
           ${isWished ? ICONS.heartFilled : ICONS.heart}
         </button>
+        <div class="pc-quick-add">
+          <button class="pc-quick-add-btn" onclick="event.stopPropagation(); addToCart('${p.id}')">
+            ${ICONS.cart}
+            <span>Quick add</span>
+          </button>
+        </div>
       </div>
       <div class="pc-body">
-        <div class="pc-title">${escape(p.title)}</div>
-        <div class="pc-price">${money(p.price)}</div>
-        <div class="pc-meta">${p.sold >= 1000 ? (p.sold/1000).toFixed(0)+'k+' : p.sold}+ sold</div>
-        <button class="pc-action" onclick="event.stopPropagation(); addToCart('${p.id}')">Add to Cart</button>
+        <div class="pc-meta-row">
+          <span class="pc-rating">
+            <span class="pc-star">${ICONS.star}</span>
+            <strong>${p.rating.toFixed(1)}</strong>
+            <span class="pc-rating-count">(${p.reviewCount >= 1000 ? (p.reviewCount/1000).toFixed(1) + 'k' : p.reviewCount})</span>
+          </span>
+          <span class="pc-sold">${p.sold >= 1000 ? (p.sold/1000).toFixed(0) + 'k+' : p.sold}+ sold</span>
+        </div>
+        <h3 class="pc-title">${escape(p.title)}</h3>
+        <div class="pc-pricing">
+          <span class="pc-price">${money(p.price)}</span>
+          <span class="pc-original">${money(p.originalPrice)}</span>
+        </div>
+        <button class="pc-action" onclick="event.stopPropagation(); addToCart('${p.id}')">
+          <span>Add to Cart</span>
+          ${ICONS.plus}
+        </button>
       </div>
-    </div>`;
+    </article>`;
 }
 
 // ===========================================
@@ -312,7 +334,7 @@ function renderHome() {
     ${renderHeroCarousel()}
 
     <div class="container">
-      <div class="cat-strip">
+      <div class="cat-strip reveal">
         ${CATEGORIES.map(c => `
           <a class="cat-item" onclick="navigate('category','${c.id}')">
             <div class="cat-icon">${ICONS[c.icon] || ICONS.home}</div>
@@ -323,20 +345,32 @@ function renderHome() {
     </div>
 
     <div class="container">
-      <section class="section" style="padding-top:0;">
-        <div class="section-head reveal">
-          <h2 class="section-title">Top picks for you</h2>
-          <a class="section-link" onclick="navigate('category','all')">View all →</a>
+      <section class="cat-section cat-section--featured reveal">
+        <div class="cat-section-head">
+          <div class="cat-section-titles">
+            <span class="cat-section-eyebrow">Handpicked for you</span>
+            <h2 class="cat-section-title">Top picks for you</h2>
+            <p class="cat-section-subtitle">Our team's favorite products, chosen for quality, value, and style.</p>
+          </div>
+          <a class="cat-section-link" onclick="navigate('category','all')">
+            View all <span>${ICONS.chevronDown}</span>
+          </a>
         </div>
         <div class="product-grid stagger">
           ${top.slice(0, 10).map(productCard).join('')}
         </div>
       </section>
 
-      <section class="section" style="padding-top:0;">
-        <div class="section-head reveal">
-          <h2 class="section-title">New in store</h2>
-          <a class="section-link" onclick="navigate('category','new')">View all →</a>
+      <section class="cat-section reveal">
+        <div class="cat-section-head">
+          <div class="cat-section-titles">
+            <span class="cat-section-eyebrow cat-section-eyebrow--new">Just landed</span>
+            <h2 class="cat-section-title">New in store</h2>
+            <p class="cat-section-subtitle">Fresh arrivals added this week — be the first to discover them.</p>
+          </div>
+          <a class="cat-section-link" onclick="navigate('category','new')">
+            View all <span>${ICONS.chevronDown}</span>
+          </a>
         </div>
         <div class="product-grid stagger">
           ${newIn.slice(0, 10).map(productCard).join('')}
@@ -647,17 +681,22 @@ function renderCategory() {
         </aside>
 
         <div class="listing-main">
-          <div class="listing-head reveal">
-            <div>${products.length} products</div>
+          <div class="cat-section-head reveal">
+            <div class="cat-section-titles">
+              <span class="cat-section-eyebrow">${products.length} products available</span>
+              <h2 class="cat-section-title">${escape(title)}</h2>
+            </div>
             <div class="sort-tabs">
               <button class="sort-tab active">${ICONS.check} New</button>
-              <button class="sort-tab" onclick="sortProducts('asc', this)">Price ascending</button>
-              <button class="sort-tab" onclick="sortProducts('desc', this)">Price descending</button>
+              <button class="sort-tab" onclick="sortProducts('asc', this)">Price ↑</button>
+              <button class="sort-tab" onclick="sortProducts('desc', this)">Price ↓</button>
               <button class="sort-tab" onclick="sortProducts('rating', this)">Rating</button>
             </div>
           </div>
-          <div class="product-grid stagger" id="prod-grid">
-            ${products.map(productCard).join('')}
+          <div class="cat-section">
+            <div class="product-grid stagger" id="prod-grid">
+              ${products.map(productCard).join('')}
+            </div>
           </div>
         </div>
       </div>
@@ -836,10 +875,15 @@ function renderProduct() {
         </div>
       </section>
 
-      <section class="section" style="padding-bottom:0;">
-        <div class="section-head reveal">
-          <h2 class="section-title">Top picks for you</h2>
-          <a class="section-link" onclick="navigate('category','all')">View all →</a>
+      <section class="cat-section reveal">
+        <div class="cat-section-head">
+          <div class="cat-section-titles">
+            <span class="cat-section-eyebrow">You may also like</span>
+            <h2 class="cat-section-title">Top picks for you</h2>
+          </div>
+          <a class="cat-section-link" onclick="navigate('category','all')">
+            View all <span>${ICONS.chevronDown}</span>
+          </a>
         </div>
         <div class="product-grid stagger">
           ${TOP_PICKS.slice(0, 5).map(id => productCard(getProduct(id))).join('')}
@@ -976,12 +1020,17 @@ function renderCart() {
 function renderTopPicks() {
   return `
     <div class="container">
-      <section class="section" style="padding-top:0;">
-        <div class="section-head">
-          <h2 class="section-title">Top picks for you</h2>
-          <a class="section-link" onclick="navigate('category','all')">View all →</a>
+      <section class="cat-section reveal">
+        <div class="cat-section-head">
+          <div class="cat-section-titles">
+            <span class="cat-section-eyebrow">You may also like</span>
+            <h2 class="cat-section-title">Top picks for you</h2>
+          </div>
+          <a class="cat-section-link" onclick="navigate('category','all')">
+            View all <span>${ICONS.chevronDown}</span>
+          </a>
         </div>
-        <div class="product-grid">
+        <div class="product-grid stagger">
           ${TOP_PICKS.slice(0, 5).map(id => productCard(getProduct(id))).join('')}
         </div>
       </section>
