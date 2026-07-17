@@ -147,12 +147,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
 .search-bar .cat-select {
   background: var(--color-bg-soft);
   border: none;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-3);
   border-right: 1px solid var(--color-border);
   font-size: 13px;
   color: var(--color-text);
   cursor: pointer;
-  min-width: 80px;
+  min-width: 60px;
+  max-width: 70px;
 }
 .search-bar input {
   flex: 1;
@@ -196,14 +197,17 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
   position: relative;
   width: 40px;
   height: 40px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  width: auto;
   border-radius: var(--r-md);
   color: var(--color-text);
-  transition: background .15s;
+  transition: background .15s, transform .15s;
 }
-.icon-btn:hover { background: var(--color-bg-soft); }
+.icon-btn:hover { background: var(--color-bg-soft); transform: translateY(-1px); }
 .icon-btn .badge {
   position: absolute;
   top: 4px;
