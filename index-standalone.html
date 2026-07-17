@@ -519,6 +519,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
   border-bottom: 1px solid var(--color-border-light);
   flex-wrap: wrap;
 }
+/* Tighter spacing on category listing pages (New in store, Trending, Deals, Refurbished, Brands) */
+.listing-main .cat-section-head {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+}
+.listing-main .cat-section {
+  padding: var(--space-5) var(--space-6);
+  margin-top: 0;
+}
 .cat-section-titles {
   display: flex;
   flex-direction: column;
@@ -1567,6 +1576,7 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .cat-section { padding: var(--space-6) var(--space-4); margin-top: var(--space-6); border-radius: var(--r-xl); }
   .cat-section-title { font-size: 24px; }
   .cat-section-head { margin-bottom: var(--space-5); padding-bottom: var(--space-4); }
+  .listing-main .cat-section-head { margin-bottom: var(--space-3); padding-bottom: var(--space-2); }
   .cat-section-link { padding: 8px 14px; font-size: 12px; }
   .pc-body { padding: 12px; }
   .pc-title { font-size: 13px; min-height: 36px; }
