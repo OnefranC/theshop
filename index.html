@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheShop.com — Everything you love, delivered</title>
+  <meta name="description" content="TheShop.com — General merchandise for all ages. Electronics, fashion, home, beauty, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/animations.css?v=10">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+  <style>
+    /* Initial loader shown before JS runs */
+    .boot-loader {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: #f1f5f5;
+      z-index: 9999;
+      transition: opacity .3s;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .boot-loader.hidden { opacity: 0; pointer-events: none; }
+    .boot-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #e3e7e8;
+      border-top-color: #1ba7b4;
+      border-radius: 50%;
+      animation: bspin .8s linear infinite;
+    }
+    .boot-text {
+      margin-top: 16px;
+      color: #5c6770;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    @keyframes bspin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="boot-loader" id="boot-loader">
+    <div class="boot-spinner"></div>
+    <div class="boot-text">Loading TheShop…</div>
+  </div>
+  <header id="header" class="site-header"></header>
+  <main id="app"></main>
+  <script>
+    // Hide loader once DOM is ready (in case of any failure, falls back after 6s)
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var l = document.getElementById('boot-loader');
+        if (l) l.classList.add('hidden');
+        setTimeout(function() { if (l) l.remove(); }, 400);
+      }, 200);
+    });
+    // Safety: if nothing happens after 6s, show an error
+    setTimeout(function() {
+      var app = document.getElementById('app');
+      if (app && app.children.length === 0) {
+        var l = document.getElementById('boot-loader');
+        if (l) {
+          l.innerHTML = '<div style="text-align:center; max-width:500px; padding:20px;">' +
+            '<h2 style="color:#0f1a1f; font-family:-apple-system,sans-serif;">⚠️ The page didn\'t finish loading</h2>' +
+            '<p style="color:#5c6770; font-size:14px; font-family:-apple-system,sans-serif;">This usually means the JS files failed to load. Make sure you opened this through a local server (not file://):</p>' +
+            '<pre style="background:#fff; padding:12px; border-radius:8px; text-align:left; font-size:12px; margin-top:12px; font-family:monospace; border:1px solid #e3e7e8;">cd theshop\npython3 -m http.server 8000\n# then open http://localhost:8000</pre>' +
+            '<p style="color:#5c6770; font-size:13px; margin-top:12px; font-family:-apple-system,sans-serif;">Or use the included <strong>index-standalone.html</strong> file (everything in one).</p>' +
+            '</div>';
+        }
+      }
+    }, 6000);
+    window.addEventListener('error', function(e) {
+      var l = document.getElementById('boot-loader');
+      if (l) {
+        l.innerHTML = '<div style="text-align:center; max-width:500px; padding:20px; color:#d72027;">' +
+          '<h2 style="font-family:-apple-system,sans-serif;">JavaScript Error</h2>' +
+          '<pre style="background:#fff; padding:12px; border-radius:8px; text-align:left; font-size:12px; white-space:pre-wrap; color:#0f1a1f; border:1px solid #e3e7e8;">' +
+          e.message + '</pre></div>';
+      }
+    });
+  </script>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/animations.js?v=10"></script>
+  <script src="js/app.js?v=10"></script>
+</body>
+</html>
