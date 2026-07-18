@@ -166,7 +166,22 @@ function applyPromo() {
 // ===========================================
 // Router
 // ===========================================
+function showLoader() {
+  const el = document.getElementById('page-loader');
+  if (!el) return;
+  el.classList.remove('done');
+  el.classList.add('active');
+}
+function hideLoader() {
+  const el = document.getElementById('page-loader');
+  if (!el) return;
+  el.classList.remove('active');
+  el.classList.add('done');
+  setTimeout(() => el.classList.remove('done'), 300);
+}
+
 function navigate(page, id) {
+  showLoader();
   State.currentPage = page;
   if (id) {
     if (page === 'product') State.currentProductId = id;
@@ -180,6 +195,7 @@ function navigate(page, id) {
     history.pushState(null, '', State.route);
   }
   renderCurrent();
+  hideLoader();
   // Re-run motion observer for newly added elements
   setTimeout(() => Motion && Motion.reveal('.reveal, .stagger'), 50);
   // Start hero carousel on home page
@@ -192,9 +208,10 @@ function navigate(page, id) {
 }
 
 window.addEventListener('popstate', () => {
+  showLoader();
   parseRoute();
-  // After parseRoute sets State.currentPage, renderCurrent won't overwrite
   renderCurrent();
+  hideLoader();
 });
 
 function parseRoute() {
