@@ -1582,8 +1582,6 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .checkout-layout { gap: var(--space-6); }
   .account-layout { margin: var(--space-5) 0 var(--space-8); }
   .cart-empty-illus { width: 200px; height: 200px; }
-  .hero-cta-group { flex-direction: column; align-items: stretch; }
-  .hero-cta, .hero-cta-secondary { width: 100%; justify-content: center; }
 }
 
 @media (min-width: 768px) {
