@@ -264,7 +264,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
   font-size: 12px;
 }
 
-.auth-btns { display: flex; gap: var(--space-2); }
+.auth-btns { display: none; gap: var(--space-2); }
+/* Hide category link on mobile; re-shown at 768px+ */
+.icon-btn:not([data-cart-icon]) { display: none; }
+/* Hide cart on home page mobile */
+[data-page="home"] .icon-btn[data-cart-icon] { display: none; }
 .btn-ghost {
   display: none;
   padding: 8px 18px;
@@ -1052,7 +1056,7 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
 /* Reviews */
 .reviews-section { padding: var(--space-9) 0; }
 .reviews-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: var(--space-6); }
-.rating-summary { display: flex; align-items: center; gap: var(--space-5); }
+.rating-summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
 .big-rating { font-size: 56px; font-weight: 700; line-height: 1; }
 .rating-bars { display: flex; flex-direction: column; gap: 4px; }
 .rating-bar { display: flex; align-items: center; gap: var(--space-2); font-size: 12px; color: var(--color-text-muted); }
@@ -1239,6 +1243,8 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   font-weight: 600;
   color: var(--color-text-muted);
 }
+.step span { display: none; }
+.step.active span { display: inline; }
 .step .num {
   width: 28px; height: 28px;
   border-radius: 50%;
@@ -1276,6 +1282,34 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
 .cs-title { font-size: 16px; font-weight: 700; }
 .cs-edit { font-size: 13px; color: var(--color-text); text-decoration: underline; font-weight: 500; }
 .cs-sub { font-size: 12px; color: var(--color-text-muted); margin-bottom: var(--space-3); }
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  margin-bottom: var(--space-3);
+}
+.card-row input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.card-row input:first-of-type { flex: 2 1 140px; }
+.card-row input:not(:first-of-type) { width: 52px; flex: none; }
+.card-brand {
+  background: #1a3d80;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.card-label { font-size: 11px; color: var(--color-text-muted); white-space: nowrap; }
 .field {
   width: 100%;
   padding: 14px 16px;
@@ -1534,11 +1568,11 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
    =========================================== */
 .cat-hero {
   position: relative;
-  height: 280px;
+  height: 180px;
   background: linear-gradient(120deg, #4a5d6e 0%, #6b8497 50%, #92a8b8 100%);
   display: flex;
   align-items: center;
-  padding: var(--space-5) var(--space-7);
+  padding: var(--space-3) var(--space-4);
   overflow: hidden;
 }
 .cat-hero::after {
@@ -1547,13 +1581,13 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   inset: 0;
   background: linear-gradient(90deg, transparent 50%, rgba(0,0,0,.3));
 }
-.cat-hero img { position: absolute; right: 0; top: 0; height: 100%; object-fit: cover; opacity: 0.85; }
+.cat-hero img { position: absolute; right: 0; top: 0; height: 100%; width: 100%; object-fit: cover; opacity: 0.3; }
 .cat-hero-content { position: relative; z-index: 2; color: white; max-width: 700px; }
 .cat-hero-content .breadcrumb { color: rgba(255,255,255,.85); padding: 0 0 var(--space-3) 0; }
 .cat-hero-content .breadcrumb a { color: white; }
 .cat-hero-content .breadcrumb span { color: rgba(255,255,255,.7); }
-.cat-hero h1 { font-size: 48px; margin-bottom: var(--space-2); color: white; }
-.cat-hero p { font-size: 17px; opacity: .92; }
+.cat-hero h1 { font-size: 24px; margin-bottom: var(--space-1); color: white; }
+.cat-hero p { font-size: 14px; opacity: .92; }
 
 /* ===========================================
    Responsive — Mobile-first min-width breakpoints
@@ -1582,6 +1616,10 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .checkout-layout { gap: var(--space-6); }
   .account-layout { margin: var(--space-5) 0 var(--space-8); }
   .cart-empty-illus { width: 200px; height: 200px; }
+  .step span { display: inline; }
+  .cat-hero { height: 200px; }
+  .cat-hero h1 { font-size: 32px; }
+  .cat-hero p { font-size: 16px; }
 }
 
 @media (min-width: 768px) {
@@ -1608,7 +1646,10 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   }
   .sub-nav a:hover { transform: translateY(-1px); }
   .lang-select { display: flex; }
+  .auth-btns { display: flex; }
   .auth-btns .btn-ghost { display: inline-flex; }
+  .icon-btn:not([data-cart-icon]) { display: inline-flex; }
+  [data-page="home"] .icon-btn[data-cart-icon] { display: inline-flex; }
   .deliver-to { display: flex; }
   .header-top { grid-template-columns: auto auto 1fr auto; gap: var(--space-4); }
   .hero { height: 380px; }
@@ -1630,6 +1671,9 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
   .otp-in { width: 44px; height: 55px; font-size: 22px; }
   .account-layout { min-height: 500px; }
+  .cat-hero { height: 240px; padding: var(--space-5) var(--space-7); }
+  .cat-hero h1 { font-size: 40px; }
+  .cat-hero p { font-size: 17px; }
   .pc-quick-add { position: absolute; left: 0; right: 0; bottom: 0; transform: translateY(100%); opacity: 0; pointer-events: none; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s; padding: 10px; }
   .product-card:hover .pc-quick-add, .product-card:focus-visible .pc-quick-add { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .pc-quick-add-btn { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
@@ -1672,6 +1716,11 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
   .hero-cta-group { flex-direction: row; align-items: center; }
   .hero-cta, .hero-cta-secondary { width: auto; justify-content: center; }
+  .cat-hero { height: 280px; }
+  .cat-hero img { opacity: 0.85; }
+  .cat-hero h1 { font-size: 48px; }
+  .cat-hero p { font-size: 17px; }
+  .cat-hero img { width: auto; }
   .cart-empty-illus { width: 240px; height: 240px; }
   .cart-empty h2 { font-size: 24px; }
   .otp-in { width: 50px; height: 60px; font-size: 24px; }

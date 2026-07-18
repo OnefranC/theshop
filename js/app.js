@@ -280,6 +280,7 @@ function renderHeader() {
   if (!head) return;
   const count = getCartCount();
   const isAuthed = !!State.user;
+  head.dataset.page = State.currentPage;
   head.innerHTML = `
     <div class="container">
       <div class="header-top">
@@ -414,7 +415,7 @@ function renderHeroCarousel() {
     <section class="hero-carousel" id="hero-carousel">
       <div class="hero-slides" id="hero-slides">
         ${HERO_SLIDES.map((s, i) => `
-          <div class="hero-slide ${i===0?'active':''}" data-slide="${i}" style="background:${s.bgGradient}; height:${s.height || 480}px;">
+          <div class="hero-slide ${i===0?'active':''}" data-slide="${i}" style="background:${s.bgGradient};">
             <div class="hero-decor">
               <img src="${s.decorLeft}" alt="" class="decor-left" onerror="this.style.display='none'">
               <img src="${s.decorRight}" alt="" class="decor-right" onerror="this.style.display='none'">
@@ -1229,15 +1230,15 @@ function renderCheckoutStep2() {
       <div class="cs-title" style="margin-bottom:var(--space-3);">What's your payment information?</div>
       <div class="cs-sub">Enter your card information</div>
       <div class="cs-sub" style="margin-bottom:var(--space-3);">All transactions are secure and encrypted</div>
-      <div style="position:relative; display:flex; align-items:center; gap:var(--space-2); padding:14px 16px; border:1px solid var(--color-border); border-radius:var(--r-md); margin-bottom:var(--space-3);">
-        <span style="background:#1a3d80; color:white; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700;">VISA</span>
-        <input style="border:none; outline:none; flex:1; font-size:15px;" placeholder="1234 1234 1234 1234" id="card-num" oninput="collectPayment()" maxlength="19">
-        <span style="font-size:11px; color:var(--color-text-muted);">EXP</span>
-        <input style="border:none; outline:none; width:50px; font-size:15px;" placeholder="MM/YY" id="card-exp" oninput="collectPayment()">
-        <span style="font-size:11px; color:var(--color-text-muted);">CSV</span>
-        <input style="border:none; outline:none; width:50px; font-size:15px;" placeholder="123" id="card-csv" oninput="collectPayment()">
-        <span style="font-size:11px; color:var(--color-text-muted);">ZIP</span>
-        <input style="border:none; outline:none; width:60px; font-size:15px;" placeholder="00000" id="card-zip" oninput="collectPayment()">
+      <div class="card-row">
+        <span class="card-brand">VISA</span>
+        <input placeholder="1234 1234 1234 1234" id="card-num" oninput="collectPayment()" maxlength="19">
+        <span class="card-label">EXP</span>
+        <input placeholder="MM/YY" id="card-exp" oninput="collectPayment()" maxlength="5">
+        <span class="card-label">CVC</span>
+        <input placeholder="123" id="card-csv" oninput="collectPayment()" maxlength="4">
+        <span class="card-label">ZIP</span>
+        <input placeholder="00000" id="card-zip" oninput="collectPayment()" maxlength="5">
       </div>
       <a class="cs-edit" style="display:inline-block; margin-bottom:var(--space-4);">Delete</a>
 

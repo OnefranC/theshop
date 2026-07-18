@@ -219,7 +219,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 .hero-slides {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 340px;
   overflow: hidden;
 }
 .hero-slide {
@@ -379,6 +379,8 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 /* Desktop carousel enhancements */
 @media (min-width: 768px) {
   .hero-slides { height: 460px; }
+  .hero-title { font-size: 40px; }
+  .hero-subtitle { font-size: 18px; }
   .hero-arrow { width: 44px; height: 44px; }
   .hero-carousel .hero-dots { bottom: 20px; gap: 8px; }
   .hero-carousel .hero-dots .dot { width: 40px; height: 5px; }
@@ -398,20 +400,20 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 }
 .hero-decor .decor-left {
   position: absolute;
-  left: 0;
+  left: -10%;
   bottom: 0;
-  height: 90%;
+  height: 55%;
   width: auto;
-  opacity: 0.85;
+  opacity: 0.7;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
 }
 .hero-decor .decor-right {
   position: absolute;
-  right: 0;
+  right: -10%;
   top: 0;
-  height: 60%;
+  height: 40%;
   width: auto;
-  opacity: 0.85;
+  opacity: 0.7;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
 }
 .hero-content {
@@ -458,6 +460,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   animation: heroTitleIn 0.7s 0.25s both var(--ease-spring);
   margin-bottom: var(--space-3);
   color: white;
+  font-size: 26px;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
 @keyframes heroTitleIn {
@@ -467,10 +470,10 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 .hero-subtitle {
   will-change: transform, opacity;
   animation: heroSubtitleIn 0.6s 0.4s both var(--ease-spring);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5;
   max-width: 520px;
-  margin: 0 auto var(--space-6);
+  margin: 0 auto var(--space-4);
   color: rgba(255, 255, 255, 0.88);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
@@ -498,10 +501,10 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   gap: 8px;
   background: var(--color-primary);
   color: white;
-  padding: 14px 24px;
+  padding: 12px 20px;
   border-radius: var(--r-pill);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -543,15 +546,23 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 
 /* Tablet+ hero layout */
 @media (min-width: 640px) {
+  .hero-slides { height: 380px; }
+  .hero-title { font-size: 32px; }
+  .hero-subtitle { font-size: 16px; margin-bottom: var(--space-5); }
   .hero-cta-group { flex-direction: row; align-items: center; gap: 14px; }
   .hero-cta { display: inline-flex; width: auto; padding: 16px 30px; font-size: 14px; }
   .hero-cta-secondary { display: inline-flex; width: auto; padding: 14px 24px; font-size: 14px; }
-  .hero-subtitle { font-size: 16px; }
 }
 @media (min-width: 1024px) {
+  .hero-slides { height: 500px; }
+  .hero-title { font-size: 52px; }
   .hero-subtitle { font-size: 18px; }
   .hero-cta { padding: 18px 36px; font-size: 15px; }
   .hero-cta-secondary { padding: 16px 28px; font-size: 14px; }
+}
+@media (min-width: 640px) {
+  .hero-decor .decor-left { height: 65%; left: 0; opacity: 0.85; }
+  .hero-decor .decor-right { height: 45%; right: 0; opacity: 0.85; }
 }
 @media (min-width: 768px) {
   .hero-decor .decor-left { height: 85%; }
