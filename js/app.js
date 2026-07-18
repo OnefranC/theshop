@@ -173,7 +173,7 @@ function showLoader() {
   el.classList.remove('done');
   el.classList.add('active');
   clearTimeout(loaderTimeout);
-  loaderTimeout = setTimeout(hideLoader, 5000);
+  loaderTimeout = setTimeout(hideLoader, 3000);
 }
 function hideLoader() {
   const el = document.getElementById('page-loader');
@@ -639,7 +639,7 @@ function renderCategory() {
   } else if (cat === 'refurbished') {
     products = REFURBISHED_PRODUCTS.map(id => getProduct(id)).filter(Boolean);
     title = 'Refurbished';
-    heroImg = 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80';
+    heroImg = 'https://images.unsplash.com/photo-1491933382434-500287f9b54b?w=1200&q=80';
     heroSub = 'Like-new products at unbeatable prices — fully inspected and certified';
   } else if (cat === 'brands') {
     products = BRANDS_PRODUCTS.map(id => getProduct(id)).filter(Boolean);
