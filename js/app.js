@@ -339,15 +339,13 @@ function renderHome() {
   return `
     ${renderHeroCarousel()}
 
-    <div class="container">
-      <div class="cat-strip reveal">
-        ${CATEGORIES.map(c => `
-          <a class="cat-item" onclick="navigate('category','${c.id}')">
-            <div class="cat-icon">${ICONS[c.icon] || ICONS.home}</div>
-            <div class="cat-name">${c.name}</div>
-          </a>
-        `).join('')}
-      </div>
+    <div class="cat-strip reveal">
+      ${CATEGORIES.map(c => `
+        <a class="cat-item" onclick="navigate('category','${c.id}')">
+          <div class="cat-icon">${ICONS[c.icon] || ICONS.home}</div>
+          <div class="cat-name">${c.name}</div>
+        </a>
+      `).join('')}
     </div>
 
     <div class="container">

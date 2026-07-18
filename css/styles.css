@@ -475,7 +475,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; let
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2);
-  padding: var(--space-5) 0;
+  padding: var(--space-5) var(--space-5);
   background: white;
 }
 .cat-item {
@@ -1565,7 +1565,7 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .hero { height: 360px; }
   .hero-title { font-size: 32px; margin-bottom: var(--space-5); }
   .hero-eyebrow { font-size: 20px; }
-  .cat-strip { grid-template-columns: repeat(4, 1fr); gap: var(--space-3); padding: var(--space-6) 0; }
+  .cat-strip { grid-template-columns: repeat(4, 1fr); gap: var(--space-3); padding: var(--space-6) var(--space-6); }
   .cat-item { padding: var(--space-4); gap: var(--space-2); }
   .cat-icon { width: 52px; height: 52px; }
   .cat-name { font-size: 12px; }
@@ -1647,7 +1647,7 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .hero { height: 420px; }
   .hero-title { font-size: 48px; }
   .hero-eyebrow { font-size: 24px; }
-  .cat-strip { grid-template-columns: repeat(8, 1fr); gap: var(--space-4); padding: var(--space-7) 0; }
+  .cat-strip { grid-template-columns: repeat(8, 1fr); gap: var(--space-4); padding: var(--space-7) var(--space-5); }
   .cat-item { padding: var(--space-4); }
   .cat-icon { width: 60px; height: 60px; }
   .cat-name { font-size: 13px; }
@@ -1689,7 +1689,7 @@ input[type=range] { width: 100%; accent-color: var(--color-primary); }
   .cat-section { padding: var(--space-10) var(--space-9); margin-top: var(--space-9); }
   .cat-section-title { font-size: 36px; }
   .section { padding: var(--space-10) 0; }
-  .cat-strip { padding: var(--space-8) 0; gap: var(--space-5); }
+  .cat-strip { padding: var(--space-8) var(--space-7); gap: var(--space-5); }
   .pdp-layout { gap: var(--space-8); }
 }
 
