@@ -166,11 +166,14 @@ function applyPromo() {
 // ===========================================
 // Router
 // ===========================================
+let loaderTimeout = null;
 function showLoader() {
   const el = document.getElementById('page-loader');
   if (!el) return;
   el.classList.remove('done');
   el.classList.add('active');
+  clearTimeout(loaderTimeout);
+  loaderTimeout = setTimeout(hideLoader, 5000);
 }
 function hideLoader() {
   const el = document.getElementById('page-loader');
