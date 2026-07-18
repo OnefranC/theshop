@@ -775,7 +775,7 @@ function renderProduct() {
         <span class="sep">›</span>
         <a onclick="navigate('category','new')">New in store</a>
         <span class="sep">›</span>
-        <a onclick="navigate('category', p.category)">${CATEGORIES.find(c=>c.id===p.category)?.name || 'Category'}</a>
+        <a onclick="navigate('category', '${p.category}')">${CATEGORIES.find(c=>c.id===p.category)?.name || 'Category'}</a>
         <span class="sep">›</span>
         <span>${escape(p.title.split(' ').slice(0,5).join(' '))}...</span>
       </div>
