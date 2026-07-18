@@ -1,13 +1,17 @@
 /* ===========================================
-   TheShop - Animations & Motion
-   Framer-Motion-inspired smooth animations
+   TheShop - Buttery Smooth Animations
+   GPU-accelerated: only transform & opacity
    =========================================== */
 
-/* Smooth scrolling for the entire page */
-html { scroll-behavior: smooth; }
-body { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+:root {
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-/* Honor reduced motion */
+html { scroll-behavior: smooth; }
+body { -webkit-overflow-scrolling: touch; }
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -15,153 +19,130 @@ body { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .stagger > *, .hero-slide, .cart-row, .modal, .toast { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 }
 
-/* ----- Reveal-on-scroll animations ----- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); animation: revealFallback 0s 1.2s forwards; }
-.reveal.visible { opacity: 1; transform: translateY(0); animation: none; }
-.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); animation: revealFallback 0s 1.2s forwards; }
-.reveal-left.visible { opacity: 1; transform: translateX(0); animation: none; }
-.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); animation: revealFallback 0s 1.2s forwards; }
-.reveal-right.visible { opacity: 1; transform: translateX(0); animation: none; }
-.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); animation: revealFallback 0s 1.2s forwards; }
-.reveal-scale.visible { opacity: 1; transform: scale(1); animation: none; }
-@keyframes revealFallback {
-  to { opacity: 1; transform: translateY(0) translateX(0) scale(1); }
-}
+/* ----- Scroll Reveal (GPU) ----- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); will-change: transform, opacity; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); will-change: transform, opacity; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); will-change: transform, opacity; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); will-change: transform, opacity; }
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-/* Stagger delays for child elements */
-.stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-/* Fallback: if JS is slow, show items after 1s to avoid them being invisible forever */
-.stagger > * { animation: staggerFallback 0s 1.2s forwards; }
-@keyframes staggerFallback {
-  to { opacity: 1; transform: translateY(0); }
-}
-.stagger.visible > * { opacity: 1; transform: translateY(0); animation: none; }
-.stagger.visible > *:nth-child(1)  { transition-delay: 0.05s; }
-.stagger.visible > *:nth-child(2)  { transition-delay: 0.10s; }
-.stagger.visible > *:nth-child(3)  { transition-delay: 0.15s; }
-.stagger.visible > *:nth-child(4)  { transition-delay: 0.20s; }
-.stagger.visible > *:nth-child(5)  { transition-delay: 0.25s; }
-.stagger.visible > *:nth-child(6)  { transition-delay: 0.30s; }
-.stagger.visible > *:nth-child(7)  { transition-delay: 0.35s; }
-.stagger.visible > *:nth-child(8)  { transition-delay: 0.40s; }
-.stagger.visible > *:nth-child(9)  { transition-delay: 0.45s; }
-.stagger.visible > *:nth-child(10) { transition-delay: 0.50s; }
-.stagger.visible > *:nth-child(11) { transition-delay: 0.55s; }
-.stagger.visible > *:nth-child(12) { transition-delay: 0.60s; }
-.stagger.visible > *:nth-child(13) { transition-delay: 0.65s; }
-.stagger.visible > *:nth-child(14) { transition-delay: 0.70s; }
-.stagger.visible > *:nth-child(15) { transition-delay: 0.75s; }
-.stagger.visible > *:nth-child(n+16) { transition-delay: 0.80s; }
+/* Stagger */
+.stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s var(--ease-spring), transform 0.5s var(--ease-spring); will-change: transform, opacity; }
+.stagger.visible > * { opacity: 1; transform: translateY(0); }
+.stagger.visible > *:nth-child(1)  { transition-delay: 0.03s; }
+.stagger.visible > *:nth-child(2)  { transition-delay: 0.06s; }
+.stagger.visible > *:nth-child(3)  { transition-delay: 0.09s; }
+.stagger.visible > *:nth-child(4)  { transition-delay: 0.12s; }
+.stagger.visible > *:nth-child(5)  { transition-delay: 0.15s; }
+.stagger.visible > *:nth-child(6)  { transition-delay: 0.18s; }
+.stagger.visible > *:nth-child(7)  { transition-delay: 0.21s; }
+.stagger.visible > *:nth-child(8)  { transition-delay: 0.24s; }
+.stagger.visible > *:nth-child(9)  { transition-delay: 0.27s; }
+.stagger.visible > *:nth-child(10) { transition-delay: 0.30s; }
+.stagger.visible > *:nth-child(n+11) { transition-delay: 0.35s; }
 
-/* ----- Hover micro-interactions ----- */
-.product-card {
-  will-change: transform;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.product-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 40px -10px rgba(15, 26, 31, 0.15), 0 8px 16px -8px rgba(15, 26, 31, 0.08);
-}
-.product-card .pc-img img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* ----- Card hover micro-interactions (GPU) ----- */
+.product-card { will-change: transform; transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring); }
+.product-card:hover { transform: translateY(-6px); }
+.product-card .pc-img img { transition: transform 0.6s var(--ease-spring); will-change: transform; }
 .product-card:hover .pc-img img { transform: scale(1.08); }
+.product-card:hover .pc-title { color: var(--color-accent-hover); }
 
-.pc-wish, .gallery-wish, .gallery-share, .pc-action {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s, color 0.2s;
-}
+.pc-wish, .gallery-wish, .gallery-share, .pc-action { will-change: transform; transition: transform 0.3s var(--ease-spring), background 0.2s, color 0.2s; }
 .pc-wish:hover, .gallery-wish:hover, .gallery-share:hover { transform: scale(1.15); }
 .pc-action:hover { transform: translateY(-2px); }
 
-/* ----- Page transitions ----- */
-.page-enter { animation: pageIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+/* ----- Page transitions (GPU) ----- */
+.page-enter { will-change: transform, opacity; animation: pageIn 0.5s var(--ease-spring); }
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-/* Hero entrance */
-.hero-content { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1); }
+/* Hero entrance (GPU) */
+.hero-content { animation: heroIn 0.8s var(--ease-spring); will-change: transform, opacity; }
 @keyframes heroIn {
-  from { opacity: 0; transform: scale(0.95) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.hero-eyebrow { animation: fadeUp 0.8s 0.1s both cubic-bezier(0.16, 1, 0.3, 1); }
-.hero-title    { animation: fadeUp 0.9s 0.2s both cubic-bezier(0.16, 1, 0.3, 1); }
-.hero-cta      { animation: fadeUp 0.8s 0.4s both cubic-bezier(0.16, 1, 0.3, 1); }
+.hero-eyebrow { animation: fadeUp 0.7s 0.1s both var(--ease-spring); will-change: transform, opacity; }
+.hero-title    { animation: fadeUp 0.8s 0.2s both var(--ease-spring); will-change: transform, opacity; }
+.hero-cta, .hero-cta-secondary { animation: fadeUp 0.7s 0.4s both var(--ease-spring); will-change: transform, opacity; }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Category strip slide-in */
+/* Category strip */
 .cat-strip .cat-item {
   opacity: 0;
-  transform: translateY(20px);
-  animation: catIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(16px);
+  animation: catIn 0.5s var(--ease-spring) forwards;
+  will-change: transform, opacity;
 }
 @keyframes catIn { to { opacity: 1; transform: translateY(0); } }
-.cat-strip .cat-item:nth-child(1) { animation-delay: 0.05s; }
-.cat-strip .cat-item:nth-child(2) { animation-delay: 0.10s; }
-.cat-strip .cat-item:nth-child(3) { animation-delay: 0.15s; }
-.cat-strip .cat-item:nth-child(4) { animation-delay: 0.20s; }
-.cat-strip .cat-item:nth-child(5) { animation-delay: 0.25s; }
-.cat-strip .cat-item:nth-child(6) { animation-delay: 0.30s; }
-.cat-strip .cat-item:nth-child(7) { animation-delay: 0.35s; }
-.cat-strip .cat-item:nth-child(8) { animation-delay: 0.40s; }
+.cat-strip .cat-item:nth-child(1) { animation-delay: 0.03s; }
+.cat-strip .cat-item:nth-child(2) { animation-delay: 0.06s; }
+.cat-strip .cat-item:nth-child(3) { animation-delay: 0.09s; }
+.cat-strip .cat-item:nth-child(4) { animation-delay: 0.12s; }
+.cat-strip .cat-item:nth-child(5) { animation-delay: 0.15s; }
+.cat-strip .cat-item:nth-child(6) { animation-delay: 0.18s; }
+.cat-strip .cat-item:nth-child(7) { animation-delay: 0.21s; }
+.cat-strip .cat-item:nth-child(8) { animation-delay: 0.24s; }
 
-/* Gallery image swap */
-.gallery-main img {
-  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.thumb {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, opacity 0.2s;
-}
+/* Gallery (GPU) */
+.gallery-main img { transition: opacity 0.4s ease, transform 0.5s var(--ease-spring); will-change: transform; }
+.thumb { will-change: transform; transition: transform 0.3s var(--ease-spring), border-color 0.2s; }
 .thumb:hover { transform: translateY(-2px); }
 .thumb.active { transform: scale(1.05); }
 
-/* Cart row add/remove animation */
-.cart-row { animation: rowIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+/* Cart row animations (GPU) */
+.cart-row { will-change: transform, opacity; animation: rowIn 0.4s var(--ease-spring); overflow: hidden; }
 @keyframes rowIn {
   from { opacity: 0; transform: translateX(-20px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-.cart-row.removing { animation: rowOut 0.3s cubic-bezier(0.7, 0, 0.84, 0) forwards; }
+.cart-row.removing { animation: rowOut 0.3s ease-in forwards; }
 @keyframes rowOut {
-  to { opacity: 0; transform: translateX(20px) scale(0.95); height: 0; padding: 0; margin: 0; overflow: hidden; }
+  to { opacity: 0; transform: translateX(30px) scale(0.95); max-height: 0; padding: 0; margin: 0; }
 }
 
-/* Steps indicator */
-.step .num { transition: background 0.3s, color 0.3s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+/* Steps */
+.step .num { transition: background 0.3s, color 0.3s, transform 0.3s var(--ease-spring); will-change: transform; }
 .step.active .num { transform: scale(1.1); }
 
-/* Toasts */
+/* Toasts (GPU) */
 .toast {
-  animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards, toastOut 0.3s 2.1s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+  will-change: transform, opacity;
+  animation: toastIn 0.4s var(--ease-spring) forwards, toastOut 0.3s 2.1s ease-in forwards;
 }
 @keyframes toastIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes toastOut { to { transform: translateX(120%); opacity: 0; } }
 
-/* Quantity update bounce */
-.qty-input { transition: transform 0.2s; }
-.qty-input.bump { animation: bump 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+/* Quantity */
+.qty-input { transition: transform 0.2s; will-change: transform; }
+.qty-input.bump { animation: bump 0.3s var(--ease-spring-bounce); }
 @keyframes bump {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.25); }
   100% { transform: scale(1); }
 }
 
-/* Heart fill pop */
-.pc-wish.active { animation: heartPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+/* Heart */
+.pc-wish.active { animation: heartPop 0.4s var(--ease-spring-bounce); will-change: transform; }
 @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 
-/* Cart badge pulse */
-.icon-btn .badge { animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+/* Badge pulse */
+.icon-btn .badge { will-change: transform; animation: badgePop 0.4s var(--ease-spring-bounce); }
 @keyframes badgePop { 0% { transform: scale(0); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 
-/* Skeleton shimmer (for loading) */
+/* Skeleton */
 .shimmer {
   background: linear-gradient(90deg, #f0f3f4 0%, #e7ebec 50%, #f0f3f4 100%);
   background-size: 200% 100%;
@@ -170,54 +151,55 @@ body { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
 @keyframes shimmer { to { background-position: -200% 0; } }
 
 /* Modal */
-.modal-overlay { transition: opacity 0.3s; }
-.modal { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; }
+.modal-overlay { transition: opacity 0.3s; will-change: opacity; }
+.modal { will-change: transform; transition: transform 0.3s var(--ease-spring); }
 
-/* Field focus */
-.field, .otp-in { transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+/* Fields */
+.field, .otp-in { will-change: transform; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
 .field:focus, .otp-in:focus {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px -4px rgba(27, 167, 180, 0.15);
 }
 
 /* Review cards */
-.review-card { transition: transform 0.3s, box-shadow 0.3s; }
-.review-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(15, 26, 31, 0.1); }
+.review-card { transition: transform 0.3s, box-shadow 0.3s; will-change: transform; }
+.review-card:hover { transform: translateY(-2px); }
 
-/* Quick fade-in for dynamic content */
-.fade-in { animation: fadeIn 0.4s ease; }
+/* Quick fade */
+.fade-in { animation: fadeIn 0.4s var(--ease-spring); }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Subtle floating on hero decor */
+/* Hero decor floating */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+.hero-decor img { will-change: transform; }
 .hero-decor img:first-child { animation: float 6s ease-in-out infinite; }
 .hero-decor img:last-child  { animation: float 7s ease-in-out infinite reverse; }
 
-/* Hero dots */
+/* Dots */
 .hero-dots .dot { transition: width 0.3s, background 0.3s; }
 
 /* Sort tabs */
-.sort-tab { transition: background 0.2s, color 0.2s, transform 0.2s; }
+.sort-tab { transition: background 0.2s, color 0.2s, transform 0.2s; will-change: transform; }
 .sort-tab:hover { transform: translateY(-1px); }
 
 /* Option pills */
-.option-pill { transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
+.option-pill { transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; will-change: transform; }
 .option-pill:hover { transform: translateY(-1px); }
-.option-pill.active { animation: pillPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.option-pill.active { animation: pillPop 0.3s var(--ease-spring-bounce); }
 @keyframes pillPop { 50% { transform: scale(1.05); } }
 
 /* Checkbox */
-input[type="checkbox"] { transition: transform 0.2s; }
+input[type="checkbox"] { transition: transform 0.2s; will-change: transform; }
 input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 @keyframes checkPop { 50% { transform: scale(1.2); } }
 
 /* Buttons */
-.btn { transition: transform 0.2s, background 0.2s, box-shadow 0.2s; }
+.btn { will-change: transform; transition: transform 0.2s var(--ease-spring), background 0.2s, box-shadow 0.2s; }
 .btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
+.btn:active { transform: translateY(0) scale(0.98); }
 
 /* Loading dots */
 @keyframes dotPulse { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
@@ -226,7 +208,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
 
 /* ===========================================
-   Hero Carousel (Slide Transition)
+   Hero Carousel (GPU-accelerated)
    =========================================== */
 .hero-carousel {
   position: relative;
@@ -253,90 +235,59 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   visibility: hidden;
   pointer-events: none;
   will-change: transform, opacity;
+  transform: translateX(100%);
+  opacity: 0;
 }
 .hero-slide.active {
   visibility: visible;
   pointer-events: auto;
   z-index: 2;
   transform: translateX(0);
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  opacity: 1;
+  transition: transform 0.7s var(--ease-spring), opacity 0.5s var(--ease-spring);
 }
-/* Default state: off-screen to the right (for "next" direction) */
 .hero-slide.enter-right {
   visibility: visible;
   transform: translateX(100%);
+  opacity: 0;
   transition: none;
 }
-/* During transition: active exits left, new enters from right */
 .hero-slide.exit-left {
   visibility: visible;
   transform: translateX(-100%) !important;
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) !important;
+  opacity: 0 !important;
+  transition: transform 0.7s var(--ease-spring), opacity 0.5s var(--ease-spring) !important;
   z-index: 1;
 }
 .hero-slide.entering-from-right {
   visibility: visible;
   transform: translateX(0);
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  opacity: 1;
+  transition: transform 0.7s var(--ease-spring), opacity 0.5s var(--ease-spring);
   z-index: 2;
 }
-
-/* "Previous" direction: new slide comes from left */
 .hero-slide.enter-left {
   visibility: visible;
   transform: translateX(-100%);
+  opacity: 0;
   transition: none;
 }
 .hero-slide.exit-right {
   visibility: visible;
   transform: translateX(100%) !important;
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) !important;
+  opacity: 0 !important;
+  transition: transform 0.7s var(--ease-spring), opacity 0.5s var(--ease-spring) !important;
   z-index: 1;
 }
 .hero-slide.entering-from-left {
   visibility: visible;
   transform: translateX(0);
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  opacity: 1;
+  transition: transform 0.7s var(--ease-spring), opacity 0.5s var(--ease-spring);
   z-index: 2;
 }
 
-/* Default (no state classes): off-screen to the right (waiting) */
-.hero-slide:not(.active):not(.enter-right):not(.enter-left):not(.exit-left):not(.exit-right):not(.entering-from-right):not(.entering-from-left) {
-  visibility: hidden;
-  transform: translateX(100%);
-}
-
-/* After exit, hide the slide */
-.hero-slide.exit-left,
-.hero-slide.exit-right {
-  /* keep visible during animation, but reset z-index so future transitions work */
-  z-index: 1;
-}
-
-/* Smooth floating decor on each slide */
-.hero-slide.active .hero-content {
-  animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.hero-slide.active .hero-decor img:first-child {
-  animation: heroDecorLeft 8s ease-in-out infinite;
-}
-.hero-slide.active .hero-decor img:last-child {
-  animation: heroDecorRight 9s ease-in-out infinite;
-}
-@keyframes heroIn {
-  from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes heroDecorLeft {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(1.5deg); }
-}
-@keyframes heroDecorRight {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(-2deg); }
-}
-
-/* Carousel arrows */
+/* Arrows */
 .hero-arrow {
   position: absolute;
   top: 50%;
@@ -352,10 +303,11 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s var(--ease-spring), opacity 0.3s, background 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   opacity: 0;
+  will-change: transform;
 }
 .hero-carousel:hover .hero-arrow { opacity: 1; }
 .hero-arrow:hover {
@@ -370,7 +322,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
 .hero-prev:hover svg { transform: translateX(-2px); }
 .hero-next:hover svg { transform: translateX(2px); }
 
-/* Carousel dots with progress fill */
+/* Dots with progress */
 .hero-carousel .hero-dots {
   position: absolute;
   bottom: 28px;
@@ -380,10 +332,6 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   gap: 8px;
   z-index: 10;
   padding: 0;
-  background: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0;
 }
 .hero-carousel .hero-dots .dot {
   position: relative;
@@ -404,7 +352,6 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   width: 80px;
   border-radius: 2px;
 }
-/* Progress fill inside the active dot */
 .hero-carousel .hero-dots .dot .dot-progress {
   position: absolute;
   top: 0; left: 0;
@@ -424,7 +371,6 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   from { width: 0%; }
   to { width: 100%; }
 }
-/* When dot is no longer active, reset to 0 */
 .hero-carousel .hero-dots .dot:not(.active) .dot-progress {
   width: 0% !important;
   animation: none !important;
@@ -436,20 +382,12 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   .hero-arrow { width: 36px; height: 36px; opacity: 1; }
   .hero-prev { left: 12px; }
   .hero-next { right: 12px; }
-  .hero-carousel .hero-dots { bottom: 12px; padding: 6px 10px; gap: 6px; }
-  .hero-carousel .hero-dots .dot { width: 6px; height: 6px; }
-  .hero-carousel .hero-dots .dot.active { width: 22px; }
+  .hero-carousel .hero-dots { bottom: 12px; gap: 6px; }
+  .hero-carousel .hero-dots .dot { width: 32px; height: 4px; }
+  .hero-carousel .hero-dots .dot.active { width: 48px; }
 }
 
-/* ===========================================
-   Enhanced Hero Content
-   =========================================== */
-.hero-slide {
-  /* Allow vertical padding for content */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Decorative elements */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -498,17 +436,17 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: var(--space-4);
-  animation: heroBadgeIn 0.7s 0.1s both cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  animation: heroBadgeIn 0.6s 0.1s both var(--ease-spring);
 }
 @keyframes heroBadgeIn {
   from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-eyebrow {
-  animation: heroEyebrowIn 0.7s 0.15s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: heroEyebrowIn 0.6s 0.15s both var(--ease-spring);
   font-size: 22px;
   font-weight: 500;
-  letter-spacing: 0;
   margin-bottom: var(--space-3);
   color: rgba(255, 255, 255, 0.9);
 }
@@ -517,7 +455,8 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-title {
-  animation: heroTitleIn 0.8s 0.25s both cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  animation: heroTitleIn 0.7s 0.25s both var(--ease-spring);
   font-size: 76px;
   margin-bottom: var(--space-3);
   color: white;
@@ -528,7 +467,8 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .hero-subtitle {
-  animation: heroSubtitleIn 0.7s 0.4s both cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  animation: heroSubtitleIn 0.6s 0.4s both var(--ease-spring);
   font-size: 18px;
   line-height: 1.5;
   max-width: 520px;
@@ -546,7 +486,8 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  animation: heroCtaIn 0.7s 0.5s both cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  animation: heroCtaIn 0.6s 0.5s both var(--ease-spring);
 }
 @keyframes heroCtaIn {
   from { opacity: 0; transform: translateY(16px); }
@@ -565,7 +506,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s var(--ease-spring), background 0.2s, box-shadow 0.2s;
   border: none;
 }
 .hero-cta::after {
@@ -592,7 +533,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+  transition: transform 0.2s var(--ease-spring), background 0.2s, border-color 0.2s;
 }
 .hero-cta-secondary:hover {
   background: rgba(255, 255, 255, 0.25);
@@ -600,7 +541,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   transform: translateY(-2px);
 }
 
-/* Mobile adjustments for enhanced hero */
+/* Mobile hero adjustments */
 @media (max-width: 640px) {
   .hero-title { font-size: 38px; }
   .hero-eyebrow { font-size: 16px; }
@@ -611,7 +552,7 @@ input[type="checkbox"]:checked { animation: checkPop 0.3s; }
   .hero-decor .decor-right { height: 40%; }
 }
 
-/* Page scroll-progress (subtle) */
+/* Scroll progress */
 .scroll-progress {
   position: fixed;
   top: 0; left: 0;

@@ -285,6 +285,11 @@ function renderHeader() {
           </button>
         </div>
         <div class="header-actions">
+          <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div class="lang-select">
             ${ICONS.globe}
             <span>English-USD</span>
@@ -1585,7 +1590,40 @@ if (document.readyState === 'loading') {
   bootApp();
 }
 
-// Re-render header on resize for responsiveness
-window.addEventListener('resize', () => {
-  // optional
+// ===========================================
+// Mobile menu toggle
+// ===========================================
+function toggleMenu() {
+  const nav = document.querySelector('.sub-nav');
+  const btn = document.querySelector('.menu-toggle');
+  if (nav && btn) {
+    nav.classList.toggle('open');
+    btn.classList.toggle('active');
+  }
+}
+
+// Close mobile menu when a nav link is clicked
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('.sub-nav a');
+  if (link) {
+    const nav = document.querySelector('.sub-nav');
+    const btn = document.querySelector('.menu-toggle');
+    if (nav) nav.classList.remove('open');
+    if (btn) btn.classList.remove('active');
+  }
 });
+
+// ===========================================
+// Header scroll shadow
+// ===========================================
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  if (window.scrollY > 20) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  lastScroll = window.scrollY;
+}, { passive: true });

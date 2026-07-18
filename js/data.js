@@ -516,14 +516,14 @@ const PRODUCTS = [
     price: 2499.00, originalPrice: 2799.00, rating: 4.9, reviewCount: 3210, sold: 4500,
     category: 'electronics', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: '33MP full-frame sensor with 4K 60p video, advanced autofocus, and pro-grade build quality.',
-    images: ['https://images.unsplash.com/photo-1606986628253-49d2d9c5c0e3?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1510127031640-ca499bba820a?w=900&q=80']
   },
   {
     id: 'e004', title: 'Bose QuietComfort Earbuds II - Triple Black',
     price: 229.00, originalPrice: 299.00, rating: 4.6, reviewCount: 12340, sold: 25000,
     category: 'electronics', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Personalized noise cancellation and immersive sound. CustomTune technology calibrates sound to your ears.',
-    images: ['https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=900&q=80']
   },
   {
     id: 'e005', title: 'Apple Watch Series 9 GPS 45mm - Midnight Aluminum',
@@ -572,7 +572,7 @@ const PRODUCTS = [
     price: 349.00, originalPrice: 449.00, rating: 4.6, reviewCount: 8230, sold: 14000,
     category: 'electronics', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: '5.3K60 video, HyperSmooth 6.0, 27MP photos, and waterproof to 33ft.',
-    images: ['https://images.unsplash.com/photo-1606986628253-49d2d9c5c0e3?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=900&q=80']
   },
   {
     id: 'e012', title: 'Anker 737 Power Bank 24,000mAh 140W Output',
@@ -609,7 +609,7 @@ const PRODUCTS = [
     price: 159.00, originalPrice: 190.00, rating: 4.7, reviewCount: 12420, sold: 21000,
     category: 'fashion', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'Boost midsole, Primeknit upper, and Continental rubber outsole for ultimate comfort.',
-    images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=900&q=80']
   },
   {
     id: 'f003', title: 'Ralph Lauren Polo Men\'s Cotton Shirt - Navy',
@@ -658,14 +658,14 @@ const PRODUCTS = [
     price: 350.00, originalPrice: 450.00, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'fashion', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Polished pebble leather, magnetic snap closure, and Signature C hardware.',
-    images: ['https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=900&q=80']
   },
   {
     id: 'f010', title: 'New Balance Fresh Foam 1080v13 - Grey/White',
     price: 159.99, originalPrice: 184.99, rating: 4.6, reviewCount: 4230, sold: 7800,
     category: 'fashion', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'Plush Fresh Foam X midsole, engineered hypoknit upper, and ultra-comfortable ride.',
-    images: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1603808034871-4d98c1b46218?w=900&q=80']
   },
   {
     id: 'f011', title: 'Madewell Women\'s Denim Jacket - Vintage Wash',
@@ -744,7 +744,7 @@ const PRODUCTS = [
     price: 199.99, originalPrice: 249.99, rating: 4.7, reviewCount: 14210, sold: 25000,
     category: 'home', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Pressure cook, air fry, slow cook, steam, sear, sauté, bake, roast, dehydrate, and yogurt.',
-    images: ['https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80']
   },
   {
     id: 'h008', title: 'Crayola Ultimate Crayon Collection 152 Pieces',
@@ -802,14 +802,14 @@ const PRODUCTS = [
     price: 8.90, originalPrice: 12.00, rating: 4.6, reviewCount: 92300, sold: 180000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Multi-depth hydration serum with 5 forms of hyaluronic acid and vitamin B5.',
-    images: ['https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=80']
   },
   {
     id: 'b002', title: 'Estée Lauder Advanced Night Repair Serum 50ml',
     price: 105.00, originalPrice: 145.00, rating: 4.8, reviewCount: 14230, sold: 25000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Iconic anti-aging serum that works overnight to help skin look younger.',
-    images: ['https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=900&q=80']
   },
   {
     id: 'b003', title: 'Maybelline Fit Me Matte + Poreless Foundation',
@@ -823,7 +823,7 @@ const PRODUCTS = [
     price: 16.97, originalPrice: 22.00, rating: 4.7, reviewCount: 82300, sold: 150000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Lightweight, oil-free moisturizer with ceramides and hyaluronic acid for all skin types.',
-    images: ['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1570194065650-d99fb4a25e22?w=900&q=80']
   },
   {
     id: 'b005', title: 'Charlotte Tilbury Pillow Talk Lipstick - Original',
@@ -851,7 +851,7 @@ const PRODUCTS = [
     price: 36.99, originalPrice: 45.99, rating: 4.6, reviewCount: 9230, sold: 16000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Invisible finish, weightless texture, and broad-spectrum protection.',
-    images: ['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=80']
   },
   {
     id: 'b009', title: 'Dyson Airwrap Multi-Styler Complete - Nickel/Copper',
@@ -865,14 +865,14 @@ const PRODUCTS = [
     price: 19.00, originalPrice: 24.00, rating: 4.8, reviewCount: 18230, sold: 32000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'The iconic blue-red matte lipstick that flatters every skin tone.',
-    images: ['https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1583241519240-3a846c6e8f8a?w=900&q=80']
   },
   {
     id: 'b011', title: 'Drunk Elephant Bronzing Drops - Dusk',
     price: 36.00, originalPrice: 44.00, rating: 4.5, reviewCount: 4230, sold: 7800,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Customizable, buildable, natural-looking bronzer for face and body.',
-    images: ['https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=80']
   },
   {
     id: 'b012', title: 'Tatcha The Camellia Cleansing Oil',
@@ -886,14 +886,14 @@ const PRODUCTS = [
     price: 19.00, originalPrice: 24.00, rating: 4.8, reviewCount: 18420, sold: 32000,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Universal rose-nude lip gloss with explosive shine and a hint of mint.',
-    images: ['https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1583241519240-3a846c6e8f8a?w=900&q=80']
   },
   {
     id: 'b014', title: 'Sunday Riley Good Genes All-In-One Lactic Acid Treatment',
     price: 85.00, originalPrice: 105.00, rating: 4.6, reviewCount: 4230, sold: 7800,
     category: 'beauty', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Lactic acid treatment that brightens, plumps, and smooths skin instantly.',
-    images: ['https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80']
   },
 
   // ========== SPORTS (additional 14) ==========
@@ -902,7 +902,7 @@ const PRODUCTS = [
     price: 129.99, originalPrice: 159.99, rating: 4.7, reviewCount: 8230, sold: 14000,
     category: 'sports', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'Responsive React foam, breathable mesh upper, and reliable everyday trainer.',
-    images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1560769629-97571966e5b2?w=900&q=80']
   },
   {
     id: 's002', title: 'Manduka PRO Yoga Mat 6mm - Black',
@@ -944,7 +944,7 @@ const PRODUCTS = [
     price: 89.99, originalPrice: 119.99, rating: 4.5, reviewCount: 1230, sold: 2400,
     category: 'sports', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'HOVR cushioning for energy return, breathable mesh, and supportive heel counter.',
-    images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1608256246200-53e635b0809b?w=900&q=80']
   },
   {
     id: 's008', title: 'Hydro Flask 32 oz Wide Mouth Water Bottle',
@@ -972,7 +972,7 @@ const PRODUCTS = [
     price: 249.99, originalPrice: 299.99, rating: 4.7, reviewCount: 1820, sold: 3400,
     category: 'sports', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'AMOLED display, 11-day battery, and personalized daily suggested workouts.',
-    images: ['https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=900&q=80']
   },
   {
     id: 's012', title: 'Spalding NBA Street Basketball - Size 7',
@@ -1016,7 +1016,7 @@ const PRODUCTS = [
     price: 39.99, originalPrice: 49.99, rating: 4.7, reviewCount: 18420, sold: 32000,
     category: 'kids', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'Over 50 songs, sounds, and phrases. Smart Stages technology for growing minds.',
-    images: ['https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1597509402757-f3a60fccf002?w=900&q=80']
   },
   {
     id: 'k004', title: 'Melissa & Doug Wooden Play Food Set - 21 Pieces',
@@ -1030,42 +1030,42 @@ const PRODUCTS = [
     price: 199.99, originalPrice: 249.99, rating: 4.7, reviewCount: 14230, sold: 25000,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: '3 stories, 8 rooms, a working elevator, and pool with slide. 70+ accessories.',
-    images: ['https://images.unsplash.com/photo-1566149932330-c0e6da2cd8f3?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&q=80']
   },
   {
     id: 'k006', title: 'Hot Wheels 5 Car Pack Assortment',
     price: 14.99, originalPrice: 19.99, rating: 4.8, reviewCount: 38230, sold: 65000,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: '5 die-cast cars in 1:64 scale. Different colors and styles in every pack.',
-    images: ['https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1566576912328-b4d2b1b7a9e5?w=900&q=80']
   },
   {
     id: 'k007', title: 'VTech Touch and Teach Word Book',
     price: 22.99, originalPrice: 29.99, rating: 4.7, reviewCount: 14230, sold: 25000,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: '12 interactive pages, teaches over 100 words. Bilingual English/Spanish.',
-    images: ['https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1495446815901-a7297e633e98?w=900&q=80']
   },
   {
     id: 'k008', title: 'Nerf Elite 2.0 Commander RD-6 Blaster',
     price: 24.99, originalPrice: 34.99, rating: 4.6, reviewCount: 18230, sold: 32000,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: '6-dart rotating drum, includes 12 Nerf Elite darts. Ages 8+.',
-    images: ['https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1576610616653-5c4dc3ddde97?w=900&q=80']
   },
   {
     id: 'k009', title: 'Crayola Inspiration Art Case 140 Pieces',
     price: 19.99, originalPrice: 29.99, rating: 4.8, reviewCount: 28420, sold: 52000,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: '64 crayons, 40 colored pencils, 28 markers, 12 colored pencils. Portable case.',
-    images: ['https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1512820790803-83ca734da794?w=900&q=80']
   },
   {
     id: 'k010', title: 'Step2 Neighborhood Express Activity Center',
     price: 109.99, originalPrice: 139.99, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'kids', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Train-themed indoor/outdoor play center. Multiple activities for toddler fun.',
-    images: ['https://images.unsplash.com/photo-1566149932330-c0e6da2cd8f3?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1597509402757-f3a60fccf002?w=900&q=80']
   },
   {
     id: 'k011', title: 'Pampers Baby-Dry Disposable Diapers Size 4 (124 Count)',
@@ -1086,7 +1086,7 @@ const PRODUCTS = [
     price: 39.99, originalPrice: 49.99, rating: 4.6, reviewCount: 8230, sold: 14000,
     category: 'kids', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: 'Fun light-up soles with every step. Easy on/off with hook-and-loop closure.',
-    images: ['https://images.unsplash.com/photo-1566149932330-c0e6da2cd8f3?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80']
   },
   {
     id: 'k014', title: 'Roblox Gift Card $50 - Digital Code',
@@ -1102,7 +1102,7 @@ const PRODUCTS = [
     price: 199.00, originalPrice: 249.00, rating: 4.7, reviewCount: 142300, sold: 250000,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Active Noise Cancellation, Adaptive Transparency, Personalized Spatial Audio.',
-    images: ['https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1484704069851-2d0a05b8d2da?w=900&q=80']
   },
   {
     id: 'a002', title: 'JBL Charge 5 Portable Bluetooth Speaker - Black',
@@ -1116,21 +1116,21 @@ const PRODUCTS = [
     price: 599.95, originalPrice: 699.95, rating: 4.7, reviewCount: 820, sold: 1400,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Reference-class open-back headphones for audiophiles. Crystal-clear sound.',
-    images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80']
   },
   {
     id: 'a004', title: 'Marshall Stanmore III Bluetooth Speaker - Cream',
     price: 379.99, originalPrice: 449.99, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'audio', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Iconic Marshall design with powerful, room-filling sound and Bluetooth 5.2.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1545454675-3531b5438153?w=900&q=80']
   },
   {
     id: 'a005', title: 'Beats Studio Pro Wireless Headphones - Black',
     price: 349.99, originalPrice: 399.99, rating: 4.5, reviewCount: 4230, sold: 7800,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Lossless audio, 40-hour battery, and personalized Spatial Audio.',
-    images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1484704069851-2d0a05b8d2da?w=900&q=80']
   },
   {
     id: 'a006', title: 'Audio-Technica AT2020 Cardioid Condenser Microphone',
@@ -1144,28 +1144,28 @@ const PRODUCTS = [
     price: 249.00, originalPrice: 299.00, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Next-gen acoustics, WiFi 6, Bluetooth, and built-in voice control.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=900&q=80']
   },
   {
     id: 'a008', title: 'Bose SoundLink Flex Bluetooth Speaker - Stone Blue',
     price: 149.00, originalPrice: 179.00, rating: 4.6, reviewCount: 8230, sold: 14000,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'PositionIQ technology, IP67 waterproof, and 12-hour battery life.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1603534633872-fc13468be791?w=900&q=80']
   },
   {
     id: 'a009', title: 'SteelSeries Arctis Nova Pro Wireless Gaming Headset',
     price: 349.99, originalPrice: 449.99, rating: 4.5, reviewCount: 1230, sold: 2400,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Active noise cancellation, dual wireless, and hot-swappable battery.',
-    images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=900&q=80']
   },
   {
     id: 'a010', title: 'Yamaha YAS-209 Sound Bar with Wireless Subwoofer',
     price: 299.99, originalPrice: 399.99, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'DTS Virtual:X 3D surround, built-in Alexa, and wireless subwoofer.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=900&q=80']
   },
   {
     id: 'a011', title: 'Shure SM7B Cardioid Dynamic Microphone',
@@ -1179,21 +1179,21 @@ const PRODUCTS = [
     price: 449.00, originalPrice: 499.00, rating: 4.7, reviewCount: 1820, sold: 3200,
     category: 'audio', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Compact smart soundbar with 3D sound, voice control, and HDMI eARC.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=900&q=80']
   },
   {
     id: 'a013', title: 'AKG K371 Closed-Back Studio Headphones',
     price: 149.00, originalPrice: 199.00, rating: 4.6, reviewCount: 1820, sold: 3200,
     category: 'audio', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Reference-class studio headphones with extended frequency response.',
-    images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1618366718557-2630e18a31bb?w=900&q=80']
   },
   {
     id: 'a014', title: 'Anker Soundcore Motion Boom Plus Speaker',
     price: 129.99, originalPrice: 169.99, rating: 4.6, reviewCount: 4820, sold: 8800,
     category: 'audio', keywords: ['modern','spring'], inStock: true, seller: 'TheShop mall',
     description: '80W stereo sound, 20-hour playtime, IP67 waterproof and dustproof.',
-    images: ['https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80']
   },
 
   // ========== ACCESSORIES (additional 14) ==========
@@ -1216,14 +1216,14 @@ const PRODUCTS = [
     price: 295.00, originalPrice: 395.00, rating: 4.4, reviewCount: 1820, sold: 3200,
     category: 'accessories', keywords: ['smart','modern'], inStock: true, seller: 'TheShop mall',
     description: 'Wear OS 3, Snapdragon Wear 4100+, and heart rate, SpO2, sleep tracking.',
-    images: ['https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1523170335258-f5fe11844f6e?w=900&q=80']
   },
   {
     id: 'ac004', title: 'Tumi Alpha 3 Brief Laptop Bag - Black',
     price: 595.00, originalPrice: 695.00, rating: 4.7, reviewCount: 1820, sold: 3400,
     category: 'accessories', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Premium ballistic nylon, padded laptop compartment fits up to 15" screens.',
-    images: ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1547949003-3844ce5a4b4e?w=900&q=80']
   },
   {
     id: 'ac005', title: 'Oakley Holbrook Polarized Sunglasses - Matte Black',
@@ -1251,21 +1251,21 @@ const PRODUCTS = [
     price: 178.00, originalPrice: 248.00, rating: 4.5, reviewCount: 3820, sold: 7800,
     category: 'accessories', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Spacious tote in signature Saffiano leather with gold-tone hardware.',
-    images: ['https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=900&q=80']
   },
   {
     id: 'ac009', title: 'Herschel Little America Backpack - Black',
     price: 99.99, originalPrice: 129.99, rating: 4.7, reviewCount: 18230, sold: 35000,
     category: 'accessories', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Iconic mountaineering-inspired design with magnetic strap closures.',
-    images: ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80']
   },
   {
     id: 'ac010', title: 'Casio G-Shock GA-2100 Watch - Black',
     price: 109.99, originalPrice: 129.99, rating: 4.8, reviewCount: 8230, sold: 14000,
     category: 'accessories', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Slim Carbon Core Guard structure, 200m water resistance, and world time.',
-    images: ['https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=900&q=80']
   },
   {
     id: 'ac011', title: 'Apple AirTag 4 Pack',
@@ -1300,7 +1300,7 @@ const PRODUCTS = [
     price: 595.00, originalPrice: 695.00, rating: 4.7, reviewCount: 220, sold: 480,
     category: 'accessories', keywords: ['modern'], inStock: true, seller: 'TheShop mall',
     description: 'Handcrafted briefcase combining water-resistant canvas with full-grain leather trim.',
-    images: ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80']
+    images: ['https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=900&q=80']
   }
 ];
 
