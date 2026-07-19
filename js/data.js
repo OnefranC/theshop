@@ -1388,8 +1388,8 @@ const HERO_SLIDES = [
     bgGradient: 'linear-gradient(135deg, #2dd4e6 0%, #4dd0c8 35%, #6fc8a8 70%, #8fbc8f 100%)',
     titleColor: '#ffffff',
     eyebrowColor: 'rgba(255,255,255,0.92)',
-    decorLeft: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&q=80',
-    decorRight: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&q=80',
+    decorLeft: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80',
+    decorRight: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=600&q=80',
     badge: 'Limited time',
     height: 480
   },
