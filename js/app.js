@@ -283,6 +283,7 @@ function renderHeader() {
   if (!head) return;
   const count = getCartCount();
   const isAuthed = !!State.user;
+  const cat = State.currentPage === 'category' ? (State.currentCategory || 'all') : '';
   head.dataset.page = State.currentPage;
   head.innerHTML = `
     <div class="container">
@@ -342,6 +343,26 @@ function renderHeader() {
         <a onclick="navigate('category', 'deals')" class="${State.currentPage==='category' && State.currentCategory==='deals' ? 'active':''}">Deals today</a>
         <a onclick="navigate('category', 'refurbished')" class="${State.currentPage==='category' && State.currentCategory==='refurbished' ? 'active':''}">Refurbished</a>
         <a onclick="navigate('category', 'brands')" class="${State.currentPage==='category' && State.currentCategory==='brands' ? 'active':''}">Brands</a>
+        ${State.currentPage === 'category' ? `
+          <div class="sub-nav-divider"></div>
+          <div class="sub-nav-filters">
+            <div class="filter-group">
+              <div class="filter-title">Category</div>
+              <a class="filter-link ${cat==='all'?'active':''}" onclick="navigate('category','all');toggleMenu()">All</a>
+              ${CATEGORIES.map(c => `<a class="filter-link ${cat===c.id?'active':''}" onclick="navigate('category','${c.id}');toggleMenu()">${c.name}</a>`).join('')}
+            </div>
+            <div class="filter-group">
+              <label class="checkbox-row"><input type="checkbox"> Free shipping</label>
+              <label class="checkbox-row"><input type="checkbox"> On sale</label>
+              <label class="checkbox-row"><input type="checkbox"> In stock</label>
+            </div>
+            <div class="filter-group">
+              <div class="filter-title">Price</div>
+              <input type="range" min="0" max="100" value="50">
+              <div class="range-row"><span>$0</span><span>$100+</span></div>
+            </div>
+          </div>
+        ` : ''}
       </nav>
     </div>
   `;
